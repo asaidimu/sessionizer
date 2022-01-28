@@ -9,7 +9,7 @@ SESSIONIZER_LIST_GENERATOR=${SESSIONIZER_LIST_GENERATOR:-""}
 _generate_list(){
   # implement your own algorithm in the SESSIONIZER_LIST_GENERATOR file
 
-  if [ -n "$SESSIONIZER_LIST_GENERATOR" ] && [ -e "$LIST_GENERATOR" ]; then
+  if [ -n "$SESSIONIZER_LIST_GENERATOR" ] && [ -e "$SESSIONIZER_LIST_GENERATOR" ]; then
     # if the SESSIONIZER_LIST_GENERATOR file exists, source it
     . "$SESSIONIZER_LIST_GENERATOR"
   else

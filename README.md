@@ -41,5 +41,32 @@ Configuration in the following manner:
   - Providing the path to a text file containing paths by exporting it as ``SESSIONIZER_TARGET_LIST``, defaulting to ``"${HOME}/.cache/sessionizer.targets"``.
   - Providing an algorithm that generates the file. Theoretically, one could write it in any language, providing its invocation is defined in the shell script that will be **sourced**, identified by ``SESSIONIZER_LIST_GENERATOR``.  The default implementation involves appending the path of the users home directory to ``SESSIONIZER_TARGET_LIST``
 
+### EXAMPLE CONFIGURATION
+~/.zshrc
+``` zsh
+
+# sessionizer
+export SESSIONIZER_TARGET_LIST=~/.config/sessionizer/paths
+export SESSIONIZER_LIST_GENERATOR=~/.config/sessionizer/generator
+export SESSIONIZE="$HOME/projects:$HOME/work:$HOME/study"
+```
+
+~/.tmux.conf
+```tmux
+bind-key -r f run-shell "tmux neww -n sessionizer ~/.local/bin/sessionizer"
+```
+
+~/.config/sessionizer/generator
+```sh
+: > $SESSIONIZER_TARGET_LIST
+
+for target in $(echo $SESSIONIZE | sed "s/:/ /g"); do
+    find $target -mindepth 1 -maxdepth 1 -type d >> $SESSIONIZER_TARGET_LIST
+done
+```
+
+## SCREENSHOT
+![screenshot](https://github.com/augustinesaidimu/sessionizer/blob/main/screenshot.png?raw=true)
+
 ## LICENSE
 [MIT](https://choosealicense.com/licenses/mit/)

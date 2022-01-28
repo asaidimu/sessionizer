@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-      "ci": "yarn install --frozen-lockfile && yarn update"
+      "ci": "yarn install --frozen-lockfile && yarn upgrade"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^6.0.1",
@@ -21,7 +21,7 @@
             "@semantic-release/release-notes-generator",
             ["@semantic-release/github", {
                 "assets": [
-                    {"path": "./sessionizer.sh", "label": "sessionizer"}
+                    {"path": "./sessionizer.sh", "label": "sessionizer.sh"}
                 ],
                 "successComment": false
             }],
