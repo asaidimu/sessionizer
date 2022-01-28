@@ -93,7 +93,7 @@ _sessionize(){
 
 _help(){
   cat <<EOF
-$(bold WHY)
+$(bold RATIONALE)
   $(grey "# forget the find window.  That is for chumps")
                  from $(blue "ThePrimeagen's") .tmux.conf
 
@@ -106,7 +106,6 @@ $(bold ENV)
 
 $(bold OPTIONS)
   -h  --help     show help.
-  -o  --open     open a session (default).
   -r  --refresh  regenerate list of session targets.
 
 $(bold DEPENDS)
