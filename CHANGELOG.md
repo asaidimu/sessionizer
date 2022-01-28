@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/augustinesaidimu/sessionizer/compare/v1.0.2...v1.0.3) (2022-01-28)
+
+
+### Bug Fixes
+
+* Use a hack to fix a bug in continuation. ([1e68860](https://github.com/augustinesaidimu/sessionizer/commit/1e6886009dd78e865e1a2c7951e3566948b811ec))
+
 ## [1.0.2](https://github.com/augustinesaidimu/sessionizer/compare/v1.0.1...v1.0.2) (2022-01-28)
 
 
