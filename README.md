@@ -36,10 +36,6 @@ a generator. Configuring the session involves invoking an executible named
 a ``.env`` file within the target directory.
 
 ## Usage
-Installation of the script by copying the contents of sessionizer.sh into a locatable executible. 
-Configuration in the following manner:
-  - Providing the path to a text file containing paths by exporting it as ``SESSIONIZER_TARGET_LIST``, defaulting to ``"${HOME}/.cache/sessionizer.targets"``.
-  - Providing an algorithm that generates the file. Theoretically, one could write it in any language, providing its invocation is defined in the shell script that will be **sourced**, identified by ``SESSIONIZER_LIST_GENERATOR``.  The default implementation involves appending the path of the users home directory to ``SESSIONIZER_TARGET_LIST``
 
 #### Installation
 From this repo
@@ -52,6 +48,10 @@ From your fork; replacing the values accordingly
 sh <(curl -fsSL https://raw.githubusercontent.com/{username}/{repor}/{branch}/install.sh)
 ```
 
+#### Help
+```
+sessionizer --help
+```
 
 #### Example configuration
 ~/.zshrc
