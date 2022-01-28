@@ -41,10 +41,14 @@ Configuration in the following manner:
   - Providing the path to a text file containing paths by exporting it as ``SESSIONIZER_TARGET_LIST``, defaulting to ``"${HOME}/.cache/sessionizer.targets"``.
   - Providing an algorithm that generates the file. Theoretically, one could write it in any language, providing its invocation is defined in the shell script that will be **sourced**, identified by ``SESSIONIZER_LIST_GENERATOR``.  The default implementation involves appending the path of the users home directory to ``SESSIONIZER_TARGET_LIST``
 
-### EXAMPLE CONFIGURATION
+#### INSTALLATION
+```
+$ sh <(curl -fsSL https://raw.githubusercontent.com/augustinesaidimu/sessionizer/main/install.sh)
+```
+
+#### EXAMPLE CONFIGURATION
 ~/.zshrc
 ``` zsh
-
 # sessionizer
 export SESSIONIZER_TARGET_LIST=~/.config/sessionizer/paths
 export SESSIONIZER_LIST_GENERATOR=~/.config/sessionizer/generator
