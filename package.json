@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-      "ci": "yarn install && yarn upgrade"
+        "ci": "yarn install && yarn upgrade"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^6.0.1",
@@ -19,12 +19,18 @@
         "plugins": [
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
-            ["@semantic-release/github", {
-                "assets": [
-                    {"path": "./sessionizer.sh", "label": "sessionizer.sh"}
-                ],
-                "successComment": false
-            }],
+            [
+                "@semantic-release/github",
+                {
+                    "assets": [
+                        {
+                            "path": "./sessionizer.sh",
+                            "label": "sessionizer.sh"
+                        }
+                    ],
+                    "successComment": false
+                }
+            ],
             [
                 "@semantic-release/changelog",
                 {
