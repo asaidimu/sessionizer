@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-      "ci": "yarn install --frozen-lockfile && yarn upgrade"
+      "ci": "yarn install && yarn upgrade"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^6.0.1",
@@ -36,6 +36,7 @@
                 {
                     "assets": [
                         "CHANGELOG.md",
+                        "package.json",
                         "yarn.lock"
                     ]
                 }
