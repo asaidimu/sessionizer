@@ -61,6 +61,9 @@ _create_session(){
 
   # execute the setup script
   [ -x "$setup" ] && $setup "$session_name" "$path"
+
+  # ensures continuity of script
+  echo
 }
 
 # go to the selected target session
