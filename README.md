@@ -35,18 +35,25 @@ a generator. Configuring the session involves invoking an executible named
 ``.project`` and setting session-wide environment variables as defined in
 a ``.env`` file within the target directory.
 
-## USAGE
+## Usage
 Installation of the script by copying the contents of sessionizer.sh into a locatable executible. 
 Configuration in the following manner:
   - Providing the path to a text file containing paths by exporting it as ``SESSIONIZER_TARGET_LIST``, defaulting to ``"${HOME}/.cache/sessionizer.targets"``.
   - Providing an algorithm that generates the file. Theoretically, one could write it in any language, providing its invocation is defined in the shell script that will be **sourced**, identified by ``SESSIONIZER_LIST_GENERATOR``.  The default implementation involves appending the path of the users home directory to ``SESSIONIZER_TARGET_LIST``
 
-#### INSTALLATION
+#### Installation
+From this repo
 ```
-$ sh <(curl -fsSL https://raw.githubusercontent.com/augustinesaidimu/sessionizer/main/install.sh)
+sh <(curl -fsSL https://tinyurl.com/4t2cbsh8)
 ```
 
-#### EXAMPLE CONFIGURATION
+From your fork; replacing the values accordingly
+```
+sh <(curl -fsSL https://raw.githubusercontent.com/{username}/{repor}/{branch}/install.sh)
+```
+
+
+#### Example configuration
 ~/.zshrc
 ``` zsh
 # sessionizer
@@ -69,8 +76,8 @@ for target in $(echo $SESSIONIZE | sed "s/:/ /g"); do
 done
 ```
 
-## SCREENSHOT
+## Screenshot
 ![screenshot](https://github.com/augustinesaidimu/sessionizer/blob/main/screenshot.png?raw=true)
 
-## LICENSE
+## License
 [MIT](https://choosealicense.com/licenses/mit/)

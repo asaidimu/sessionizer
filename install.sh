@@ -21,6 +21,8 @@ _clone_repo() {
     mkdir -p "$FRAMEWORK_PATH"
 
     git clone "$FRAMEWORK_URL" --branch="$FRAMEWORK_BRANCH" "$FRAMEWORK_PATH" --depth=1 &> /dev/null
+    cd "$FRAMEWORK_PATH"
+    git pull origin main --tags &> /dev/null
 
     return $?
 }
@@ -53,7 +55,7 @@ _main(){
     wait $pid
     [ $? -ne 0 ] && _abort
 
-    FRAMEWORK_VERSION=$(git describe --tags)
+    FRAMEWORK_VERSION=$(git describe --tags | sed "s/-.*$//g")
     printf "$(green "[") Installed "$FRAMEWORK_NAME" $(bold "$FRAMEWORK_VERSION") $(green "]")\n"
 }
 
