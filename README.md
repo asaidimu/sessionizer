@@ -1,4 +1,3 @@
-
 # Tmux Sessionizer
 
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
@@ -12,18 +11,36 @@ The idea originally belongs to [ThePrimeagen](https://github.com/ThePrimeagen).
 Read the original [here](https://github.com/ThePrimeagen/.dotfiles/blob/5cd09f06d6683b91c26822a73b40e3d7fb9af57a/bin/.local/bin/tmux-sessionizer) and see how it's used [here](https://github.com/ThePrimeagen/.dotfiles/blob/5cd09f06d6683b91c26822a73b40e3d7fb9af57a/tmux/.tmux.conf#L25)
 
 ## Algorithm:
-```python
 
-def sessionize()
-  list = read_or_generate()
-  input = get_selection_(list)
-  
-  if not hasSession(path):
-    createSession(path)
-    configureSession(path)
-  
-  switchToSession()
- 
+**Pseudo Code** in JavaScript:
+
+```javascript
+function configureSession ({ name, path }){
+    if (existsInPath(path, ".project")) {
+        execute(path, ".project");
+    }
+
+    if (existsInPath(path, ".env")) {
+        getEnv(path).forEach((v) =>
+            tmux.setEnvironmentVar({
+                variable: v,
+                session: name,
+            })
+        );
+    }
+};
+
+function sessionize(){
+    const list = readOrGenerate();
+    const { name, path } = getSelectionFrom(list);
+
+    if (!tmux.hasSession(name)) {
+        tmux.createSession(name);
+        configureSession({ name, path });
+    }
+
+    switchToSession(name);
+};
 ```
 
 Put simply, the script allows the user to select a path from a list.
@@ -32,30 +49,36 @@ creates and configures a session before switching to it. The are two ways
 provided of populating the target list. Typing into a text file the list
 of paths, or extending the tool by providing the implementation of
 a generator. Configuring the session involves invoking an executible named
-``.project`` and setting session-wide environment variables as defined in
-a ``.env`` file within the target directory.
+`.project` and setting session-wide environment variables as defined in
+a `.env` file within the target directory.
 
 ## Usage
 
 #### Installation
+
 From this repo
+
 ```
 sh <(curl -fsSL https://tinyurl.com/4t2cbsh8)
 ```
 
 From your fork; replacing the values accordingly
+
 ```
 sh <(curl -fsSL https://raw.githubusercontent.com/{username}/{repor}/{branch}/install.sh)
 ```
 
 #### Help
+
 ```
 sessionizer --help
 ```
 
 #### Example configuration
+
 ~/.zshrc
-``` zsh
+
+```zsh
 # sessionizer
 export SESSIONIZER_TARGET_LIST=~/.config/sessionizer/paths
 export SESSIONIZER_LIST_GENERATOR=~/.config/sessionizer/generator
@@ -63,11 +86,13 @@ export SESSIONIZE="$HOME/projects:$HOME/work:$HOME/study"
 ```
 
 ~/.tmux.conf
+
 ```tmux
 bind-key -r f run-shell "tmux neww -n sessionizer ~/.local/bin/sessionizer"
 ```
 
 ~/.config/sessionizer/generator
+
 ```sh
 : > $SESSIONIZER_TARGET_LIST
 
@@ -77,7 +102,9 @@ done
 ```
 
 ## Screenshot
+
 ![screenshot](https://github.com/augustinesaidimu/sessionizer/blob/main/screenshot.png?raw=true)
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
