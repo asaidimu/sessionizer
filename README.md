@@ -56,16 +56,8 @@ a `.env` file within the target directory.
 
 #### Installation
 
-From this repo
-
 ```
 sh <(curl -fsSL https://tinyurl.com/4t2cbsh8)
-```
-
-From your fork; replacing the values accordingly
-
-```
-sh <(curl -fsSL https://raw.githubusercontent.com/{username}/{repor}/{branch}/install.sh)
 ```
 
 #### Help
